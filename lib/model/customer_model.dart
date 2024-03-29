@@ -12,17 +12,17 @@ class CustomerModel {
   String? country;
 
   CustomerModel(
-      {required this.id,
+      { this.id,
       required this.name,
-      required this.profile,
+       this.profile,
       required this.number,
       required this.email,
       required this.street,
       required this.streetTwo,
       required this.city,
-      required this.state,
+       this.state,
       required this.pincode,
-      required this.country});
+       this.country});
   factory CustomerModel.fromJson(Map<String, dynamic> json) {
     return CustomerModel(
       id: json['id'],
@@ -37,5 +37,20 @@ class CustomerModel {
       country: json['country'],
       state: json['state'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "profile_pic": profile!,
+      "mobile_number": number,
+      "email": email,
+      "street": street,
+      "street_two": streetTwo,
+      "city": city,
+      "pincode": pincode,
+      "country":country,
+      "state":state
+    };
   }
 }

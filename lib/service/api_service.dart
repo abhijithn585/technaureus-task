@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:task/constants/api_constants.dart';
 import 'package:task/model/customer_model.dart';
 import 'package:task/model/product_model.dart';
 
@@ -34,6 +33,14 @@ class ApiService {
         print('status code ${response.statusCode}');
         throw Exception();
       }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  createCustomer(CustomerModel value) async {
+    try {
+      await dio.post('${apiUrl}customers/', data: value.toJson());
     } catch (e) {
       throw Exception(e);
     }

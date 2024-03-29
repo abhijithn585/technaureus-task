@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task/constants/api_constants.dart';
 import 'package:task/model/customer_model.dart';
 import 'package:task/service/api_service.dart';
 
@@ -12,7 +11,7 @@ class CustomerContainer extends StatelessWidget {
       future: ApiService().getCustomers(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasData) {
@@ -81,9 +80,9 @@ class CustomerContainer extends StatelessWidget {
                                   Text('${customers.state}')
                                 ],
                               ),
-                              Row(
+                              const Row(
                                 children: [
-                                  const Text(
+                                  Text(
                                     'Due Amount: ',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,

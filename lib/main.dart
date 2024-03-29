@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:task/view/bottombar.dart';
-import 'package:task/view/customer_screen/customers_screen.dart';
-import 'package:task/view/product_screen/product_screen.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
