@@ -41,16 +41,18 @@ class CustomerContainer extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          // Padding(
-                          //   padding: const EdgeInsets.all(8.0),
-                          //   child: SizedBox(
-                          //     height: 100,
-                          //     child: ClipRRect(
-                          //         borderRadius: BorderRadius.circular(10),
-                          //         child: Image.network(
-                          //             'http://143.198.61.94${customers.profile}')),
-                          //   ),
-                          // ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              height: 100,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: customers.profile != null
+                                      ? Image.network(
+                                          'http://143.198.61.94${customers.profile}')
+                                      : Image.asset("assets/image/MESSI.jpg")),
+                            ),
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -66,13 +68,19 @@ class CustomerContainer extends StatelessWidget {
                                         fontSize: 18),
                                   ),
                                   const SizedBox(
-                                    width: 200,
+                                    width: 100,
                                   ),
                                   const Icon(Icons.phone)
                                 ],
                               ),
                               Text('id:${customers.id!}'),
-                              Text(customers.street!),
+                              Row(
+                                children: [
+                                  Text(customers.street!),
+                                  Text(',${customers.streetTwo},'),
+                                  Text('${customers.state}')
+                                ],
+                              ),
                               Row(
                                 children: [
                                   const Text(
@@ -98,9 +106,7 @@ class CustomerContainer extends StatelessWidget {
           ));
         } else {
           return Center(
-            child: Text(
-              snapshot.error.toString()
-            ),
+            child: Text(snapshot.error.toString()),
           );
         }
       },

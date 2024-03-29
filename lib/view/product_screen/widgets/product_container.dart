@@ -64,7 +64,8 @@ class ProductContainer extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10),
-                                  child: Text(product.price.toString()),
+                                  child:
+                                      Text('\$${product.price.toString()}/-'),
                                 ),
                               ],
                             ),

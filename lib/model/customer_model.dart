@@ -1,5 +1,5 @@
 class CustomerModel {
-  String? id;
+  int? id;
   String? name;
   String? profile;
   String? number;
@@ -8,7 +8,7 @@ class CustomerModel {
   String? streetTwo;
   String? city;
   String? state;
-  String? pincode;
+  int? pincode;
   String? country;
 
   CustomerModel(

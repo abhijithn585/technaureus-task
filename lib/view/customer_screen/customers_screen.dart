@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task/constants/customer_list.dart';
+import 'package:task/view/customer_screen/widget/bottomsheet.dart';
+import 'package:task/view/customer_screen/widget/customer_container.dart';
 
 class CustomersScreen extends StatefulWidget {
   const CustomersScreen({super.key});
@@ -30,17 +33,37 @@ class _CustomersScreenState extends State<CustomersScreen> {
             child: TextFormField(
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  prefixIconColor: Colors.grey.withOpacity(0.5),
-                  hintText: 'Search',
-                  hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(35)))),
+                contentPadding: EdgeInsets.symmetric(vertical: 15),
+                suffixIcon: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(FontAwesomeIcons.qrcode),
+                    SizedBox(width: 5),
+                    IconButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AddCustomerBottomSheet();
+                          },
+                        );
+                      },
+                      icon: Icon(FontAwesomeIcons.plus),
+                    ),
+                  ],
+                ),
+                prefixIcon: const Icon(Icons.search),
+                prefixIconColor: Colors.grey.withOpacity(0.5),
+                hintText: 'Search',
+                hintStyle: TextStyle(color: Colors.grey),
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(35)),
+                ),
+              ),
             ),
           ),
-          ],
+          CustomerContainer()
+        ],
       ),
     );
   }

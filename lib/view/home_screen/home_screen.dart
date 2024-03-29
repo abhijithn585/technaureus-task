@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task/view/home_screen/widgets/row_containers.dart';
+import 'package:task/view/product_screen/product_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,32 +26,68 @@ class _HomeScreenState extends State<HomeScreen> {
                   const CircleAvatar(
                     backgroundImage: AssetImage('assets/image/MESSI.jpg'),
                   ),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+                  IconButton(
+                      onPressed: () {
+                        
+                      },
+                      icon: const Icon(FontAwesomeIcons.barsStaggered))
                 ],
               ),
               const SizedBox(
                 height: 20,
               ),
-              const RowContainers(
-                  text1: 'Customers',
-                  text2: 'Products',
-                  icon1: Icons.groups,
-                  icon2: Icons.indeterminate_check_box),
-              const RowContainers(
-                  text1: 'New Order',
-                  text2: 'Return Order',
-                  icon1: Icons.post_add_outlined,
-                  icon2: Icons.subdirectory_arrow_left_rounded),
-              const RowContainers(
-                  text1: 'Add Payment',
-                  text2: "Today's Order",
-                  icon1: Icons.payment,
-                  icon2: Icons.domain_verification_outlined),
-              const RowContainers(
-                  text1: "Today's Summery",
-                  text2: 'Route',
-                  icon1: Icons.summarize,
-                  icon2: Icons.route_outlined)
+              Row(
+                children: [
+                  const RowContainers(
+                    text: 'Customers',
+                    icon: Icons.groups,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductScreen(),
+                          ));
+                    },
+                    child: RowContainers(
+                      text: 'Products',
+                      icon: FontAwesomeIcons.box,
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  const RowContainers(
+                    text: 'New Order',
+                    icon: Icons.post_add_outlined,
+                  ),
+                  RowContainers(
+                      text: 'Return Order',
+                      icon: Icons.subdirectory_arrow_left_rounded)
+                ],
+              ),
+              Row(
+                children: [
+                  const RowContainers(
+                    text: 'Add Payment',
+                    icon: FontAwesomeIcons.coins,
+                  ),
+                  RowContainers(
+                      text: "Today's Order",
+                      icon: FontAwesomeIcons.clipboardCheck)
+                ],
+              ),
+              Row(
+                children: [
+                  const RowContainers(
+                    text: "Today's Summery",
+                    icon: Icons.summarize,
+                  ),
+                  RowContainers(text: 'Route', icon: Icons.route_outlined)
+                ],
+              )
             ],
           ),
         ),
