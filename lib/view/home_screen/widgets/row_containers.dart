@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RowContainers extends StatelessWidget {
-  const RowContainers({super.key,required this.text1,required this.text2,required this.icon1,required this.icon2});
+  const RowContainers(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.icon1,
+      required this.icon2});
   final String text1;
   final String text2;
   final IconData icon1;
@@ -31,7 +36,16 @@ class RowContainers extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(icon1), Text(text1)],
+                  children: [
+                    Icon(
+                      icon1,
+                      color: Color.fromARGB(255, 16, 82, 136),
+                    ),
+                    Text(
+                      text1,
+                      style: TextStyle(color: Color.fromARGB(255, 16, 82, 136)),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -54,14 +68,23 @@ class RowContainers extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(icon2), Text(text2)],
+                  children: [
+                    Icon(
+                      icon2,
+                      color: Color.fromARGB(255, 16, 82, 136),
+                    ),
+                    Text(
+                      text2,
+                      style: TextStyle(color: Color.fromARGB(255, 16, 82, 136)),
+                    )
+                  ],
                 ),
               ),
             )
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 5,
         ),
       ],
     );

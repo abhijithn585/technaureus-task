@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task/view/bottombar.dart';
 import 'package:task/view/customer_screen/customers_screen.dart';
 import 'package:task/view/product_screen/product_screen.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CustomersScreen(),
+      home: BottomBar(),
     );
   }
 }
