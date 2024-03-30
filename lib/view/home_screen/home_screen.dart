@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   const RowContainers(
+                    
                     text: 'Customers',
                     icon: Icons.groups,
                   ),

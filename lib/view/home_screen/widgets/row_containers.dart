@@ -4,6 +4,7 @@ class RowContainers extends StatelessWidget {
   const RowContainers({super.key, required this.text, required this.icon});
   final String text;
   final IconData icon;
+
   @override
   Widget build(BuildContext context) {
     return Column(

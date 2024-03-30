@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:task/model/customer_model.dart';
 import 'package:task/model/product_model.dart';
@@ -38,11 +41,15 @@ class ApiService {
     }
   }
 
-  createCustomer(CustomerModel value) async {
+  
+  createCustomer( value) async {
     try {
-      await dio.post('${apiUrl}customers/', data: value.toJson());
-    } catch (e) {
-      throw Exception(e);
+      await dio.post('${apiUrl}customers/', data:jsonEncode(value));
+    } on DioException catch (e) {
+      if(e.response!=null){
+              log("${e.response?.data}");
+      }
     }
+
   }
 }

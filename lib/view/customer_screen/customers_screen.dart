@@ -226,7 +226,8 @@ class _CustomersScreenState extends State<CustomersScreen> {
     );
   }
 
-  createCustomer() {
+  
+  createCustomer()async {
     final name = nameController.text;
     final number = numberController.text;
     final email = emailController.text;
@@ -234,14 +235,18 @@ class _CustomersScreenState extends State<CustomersScreen> {
     final streetTwo = streetTwoController.text;
     final city = cityController.text;
     final pincode = int.tryParse(pinCodeController.text);
-    ApiService().createCustomer(CustomerModel(
+    final requestModel= CustomerModel(
         name: name,
         number: number,
         email: email,
         street: street,
         streetTwo: streetTwo,
         city: city,
-        pincode: pincode));
+        pincode: pincode,
+        state: 'kerala',
+        country: 'india',
+        );
+    ApiService().createCustomer(requestModel);
     Navigator.pop(context);
   }
 }
