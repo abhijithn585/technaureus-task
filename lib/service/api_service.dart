@@ -24,6 +24,21 @@ class ApiService {
       throw Exception(e);
     }
   }
+  Future<List<ProductModel>> searchProducts(String query) async {
+    try {
+      Response response = await dio.get("${apiUrl}products/?search_query=$query");
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = response.data!;
+        final List data = responseData['data'];
+        return data.map((datas) => ProductModel.fromJson(datas)).toList();
+      } else {
+        print('status code ${response.statusCode}');
+        throw Exception("status code error");
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 
   Future<List<CustomerModel>> getCustomers() async {
     try {
@@ -41,15 +56,26 @@ class ApiService {
     }
   }
 
-  
-  createCustomer( value) async {
+  createCustomer(value) async {
     try {
-      await dio.post('${apiUrl}customers/', data:jsonEncode(value));
+      await dio.post('${apiUrl}customers/', data: jsonEncode(value));
     } on DioException catch (e) {
-      if(e.response!=null){
-              log("${e.response?.data}");
+      if (e.response != null) {
+        log("${e.response?.data}");
       }
     }
+  }
+
+  updateCustomer(id, value) async {
+    try {
+      await dio.put("${apiUrl}customers/ $id", data: jsonEncode(value));
+    } on DioException catch (e) {
+      if (e.response != null) {
+        log("${e.response?.data}");
+      }
+    }
+  }
+  search(String username){
 
   }
 }

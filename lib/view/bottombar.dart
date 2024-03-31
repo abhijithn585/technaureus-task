@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:task/view/cart/cart.dart';
 import 'package:task/view/customer_screen/customers_screen.dart';
 import 'package:task/view/home_screen/home_screen.dart';
-import 'package:task/view/product_screen/product_screen.dart';
+import 'package:task/view/new_orrder/new_order.dart';
+import 'package:task/view/return_order/return_order.dart';
 
 
 
@@ -18,10 +20,10 @@ class _BottomBarState extends State<BottomBar> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    ProductScreen(),
-    ProductScreen(),
-    CustomersScreen(),
-    CustomersScreen()
+    const NewOrder(),
+    const Cart(),
+    const ReturnOrder(),
+    const CustomersScreen()
   ];
 
   @override
@@ -30,7 +32,7 @@ class _BottomBarState extends State<BottomBar> {
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color.fromARGB(255, 3, 12, 23),
+        selectedItemColor: const Color.fromARGB(255, 3, 12, 23),
         unselectedItemColor: Colors.black,
         currentIndex: _currentIndex,
         onTap: (index) {

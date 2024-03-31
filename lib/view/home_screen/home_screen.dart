@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task/view/home_screen/widgets/row_containers.dart';
 import 'package:task/view/product_screen/product_screen.dart';
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const CircleAvatar(
-                    backgroundImage: AssetImage('assets/image/MESSI.jpg'),
+                    backgroundImage: AssetImage('assets/image/profile.png'),
                   ),
                   IconButton(
                       onPressed: () {
@@ -48,19 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductScreen(),
+                            builder: (context) => const ProductScreen(),
                           ));
                     },
-                    child: RowContainers(
+                    child: const RowContainers(
                       text: 'Products',
                       icon: FontAwesomeIcons.box,
                     ),
                   )
                 ],
               ),
-              Row(
+              const Row(
                 children: [
-                  const RowContainers(
+                  RowContainers(
                     text: 'New Order',
                     icon: Icons.post_add_outlined,
                   ),
@@ -69,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: Icons.subdirectory_arrow_left_rounded)
                 ],
               ),
-              Row(
+              const Row(
                 children: [
-                  const RowContainers(
+                  RowContainers(
                     text: 'Add Payment',
                     icon: FontAwesomeIcons.coins,
                   ),
@@ -80,9 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: FontAwesomeIcons.clipboardCheck)
                 ],
               ),
-              Row(
+              const Row(
                 children: [
-                  const RowContainers(
+                  RowContainers(
                     text: "Today's Summery",
                     icon: Icons.summarize,
                   ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task/controllers/api_provider.dart';
+import 'package:task/controllers/search_provider.dart';
 import 'package:task/view/bottombar.dart';
 
 void main(List<String> args) {
@@ -10,9 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BottomBar(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => ApiProvider(),),ChangeNotifierProvider(create: (context) => SearchProvider(),)],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BottomBar(),
+      ),
     );
   }
 }

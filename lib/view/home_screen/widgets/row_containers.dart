@@ -31,12 +31,12 @@ class RowContainers extends StatelessWidget {
               children: [
                 Icon(
                   icon,
-                  color: Color.fromARGB(255, 16, 82, 136),
+                  color: const Color.fromARGB(255, 16, 82, 136),
                   size: 35,
                 ),
                 Text(
                   text,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color.fromARGB(255, 16, 82, 136),
                       fontWeight: FontWeight.bold),
                 )

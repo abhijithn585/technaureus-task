@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:task/controllers/api_provider.dart';
 import 'package:task/model/customer_model.dart';
 import 'package:task/service/api_service.dart';
 import 'package:task/view/customer_screen/widget/customer_container.dart';
@@ -21,6 +23,13 @@ class _CustomersScreenState extends State<CustomersScreen> {
   final TextEditingController pinCodeController = TextEditingController();
   final TextEditingController countyController = TextEditingController();
   final TextEditingController stateController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    final pro = Provider.of<ApiProvider>(context, listen: false);
+    pro.fetchCustomers();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,8 +97,8 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                       const SizedBox(height: 10),
                                       TextFormField(
                                         controller: emailController,
-                                        decoration:
-                                            const InputDecoration(labelText: 'Email'),
+                                        decoration: const InputDecoration(
+                                            labelText: 'Email'),
                                         keyboardType:
                                             TextInputType.emailAddress,
                                       ),
@@ -226,8 +235,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
     );
   }
 
-  
-  createCustomer()async {
+  createCustomer() async {
     final name = nameController.text;
     final number = numberController.text;
     final email = emailController.text;
@@ -235,17 +243,17 @@ class _CustomersScreenState extends State<CustomersScreen> {
     final streetTwo = streetTwoController.text;
     final city = cityController.text;
     final pincode = int.tryParse(pinCodeController.text);
-    final requestModel= CustomerModel(
-        name: name,
-        number: number,
-        email: email,
-        street: street,
-        streetTwo: streetTwo,
-        city: city,
-        pincode: pincode,
-        state: 'kerala',
-        country: 'india',
-        );
+    final requestModel = CustomerModel(
+      name: name,
+      number: number,
+      email: email,
+      street: street,
+      streetTwo: streetTwo,
+      city: city,
+      pincode: pincode,
+      state: 'kerala',
+      country: 'india',
+    );
     ApiService().createCustomer(requestModel);
     Navigator.pop(context);
   }
