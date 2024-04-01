@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task/model/customer_model.dart';
 import 'package:task/model/product_model.dart';
 import 'package:task/service/api_service.dart';
 
@@ -6,18 +7,13 @@ class SearchProvider extends ChangeNotifier {
   final TextEditingController queryController = TextEditingController();
   final ApiService service = ApiService();
   List<ProductModel> searchResults = [];
-  void searchMovies(String query) async {
-    if (query.isNotEmpty) {
-      try {
-        List<ProductModel> movies = await service.searchProducts(query);
-        searchResults = movies;
+  List<CustomerModel> searchCustomerResults = [];
+  void searchProducts(String query) async {
+        searchResults = await service.searchProducts(query);
         notifyListeners();
-      } catch (e) {
-        print("Error: $e");
-      }
-    } else {
-      searchResults = [];
-      notifyListeners();
-    }
+  }
+  void searchCustomers(String query) async {
+        searchCustomerResults = await service.searchCustomers(query);
+        notifyListeners();
   }
 }

@@ -39,6 +39,21 @@ class ApiService {
       throw Exception(e);
     }
   }
+  Future<List<CustomerModel>> searchCustomers(String query) async {
+    try {
+      Response response = await dio.get("${apiUrl}customers/?search_query=$query");
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = response.data!;
+        final List data = responseData['data'];
+        return data.map((datas) => CustomerModel.fromJson(datas)).toList();
+      } else {
+        print('status code ${response.statusCode}');
+        throw Exception("status code error");
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 
   Future<List<CustomerModel>> getCustomers() async {
     try {
